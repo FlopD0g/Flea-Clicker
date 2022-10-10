@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.flea-picture {
+    transition: 0.15s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: contain;
+    }
+
+    .flea-picture:hover {
+    transform: scale(105%);
+    cursor: pointer;
+    }
+
+    .flea-picture:active {
+    transform: scale(90%);
+    }
+
+    #fleas {
+    font-family: Roboto;
+    font-size: 2em;
+    text-align: center;
+    }
+
+    #currency {
+        font-family: Roboto;
+    }
