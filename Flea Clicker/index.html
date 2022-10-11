@@ -10,11 +10,46 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-      <img src=flea-index.jpg onclick="erection(1)" width=300 class="flea-picture">
-      <p><span id="fleas">0</span> <span id="currency">fleas</span></p>
-      <button onclick="buyCat()"> Buy Cat [<span id="catcost">15</span>] -- <span id="catsowned">0</span></button>
-      <button onclick="buyDog()"> Buy Dog [<span id="dogcost">100</span>] -- <span id="dogsowned">0</span></button>
-      <button onclick="buyBlood()"> Buy Blood [<span id="bloodcost">1000</span>] -- <span id="bloodowned">0</span></button>
+    <center>
+      <div class="sectionLeft">
+        <div class="scoreContainer">
+          <p><span id="fleas">0</span> <span id="currency">fleas</span></p>
+        </div>
+        <div class="clickerContainer">
+          <img src=flea.jpg onclick="erection(1)" width=300>
+        </div>
+      </div>
+
+      <div class="sectionRight">
+        <table class="shopButton" onclick="buyCat()">
+          <tr>
+            <td id="image"><img src="cat.png"></td>
+            <td id="nameAndCost">
+              <p>Cat</p>
+              <p><span id="catcost">15</span> fleas</p>
+            </td>
+            <td id="amount"><span id="catsowned">0</span></td>
+          </tr>
+        </table>
+
+        <table class="shopButton" onclick="buyDog()">
+          <tr>
+            <td id="image"><img src="dog.png"></td>
+            <td id="nameAndCost">
+              <p>Dog</p>
+              <p><span id="dogcost">100</span> fleas</p>
+            </td>
+            <td id="amount"><span id="dogsowned">0</span></td>
+          </tr>
+        </table>
+
+        <!--
+        <button onclick="buyCat()"> Buy Cat [<span id="catcost">15</span>] -- <span id="catsowned">0</span></button>
+        <button onclick="buyDog()"> Buy Dog [<span id="dogcost">100</span>] -- <span id="dogsowned">0</span></button>
+        <button onclick="buyBlood()"> Buy Blood [<span id="bloodcost">1000</span>] -- <span id="bloodowned">0</span></button>
+        -->
+      </div>
+    </center>
     <script src="script.js"></script>
   </body>
 </html>

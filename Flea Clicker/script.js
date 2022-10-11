@@ -1,5 +1,4 @@
 var fleas_owned = 0;
-var fps = 0;
 
 var catCost = 15;
 var catsOwned = 0;
@@ -19,7 +18,7 @@ function buyCat() {
     if (fleas_owned >= catCost) {
         fleas_owned = fleas_owned - catCost;
         catsOwned = catsOwned + 1;
-        catCost = Math.round(catCost * 1.15);
+        catCost = Math.round(catCost * 1.5);
 
         document.getElementById("fleas").innerHTML = fleas_owned;
         document.getElementById("catcost").innerHTML = catCost;
@@ -31,7 +30,7 @@ function buyDog() {
     if (fleas_owned >= dogCost) {
         fleas_owned = fleas_owned - dogCost;
         dogsOwned = dogsOwned + 1;
-        dogCost = Math.round(dogCost * 1.5);
+        dogCost = Math.round(dogCost * 2.5);
 
         document.getElementById("fleas").innerHTML = fleas_owned;
         document.getElementById("dogcost").innerHTML = dogCost;
@@ -43,7 +42,7 @@ function buyBlood() {
     if (fleas_owned >= bloodCost) {
         fleas_owned = fleas_owned - bloodCost;
         bloodowned = bloodowned + 1;
-        bloodCost = Math.round(bloodCost * 1.5);
+        bloodCost = Math.round(bloodCost * 5.5);
 
         document.getElementById("fleas").innerHTML = fleas_owned;
         document.getElementById("bloodcost").innerHTML = bloodCost;
@@ -52,8 +51,9 @@ function buyBlood() {
 }
 
 setInterval(function() {
-    fleas_owned = fleas_owned + (catsOwned * Math.floor((Math.random() * 3) + 1));
-    fleas_owned = fleas_owned + (dogsOwned * Math.floor((Math.random() * 5) + 1));
-    fleas_owned = fleas_owned + (bloodowned * Math.floor((Math.random() * 15) + 1));
+    fleas_owned = fleas_owned + (catsOwned * Math.floor((Math.random() * 2) + 1));
+    fleas_owned = fleas_owned + (dogsOwned * Math.floor((Math.random() * 4) + 1));
+    fleas_owned = fleas_owned + (bloodowned * Math.floor((Math.random() * 10) + 1));
     document.getElementById("fleas").innerHTML = fleas_owned;
+    document.title = fleas_owned + " fleas - Flea Clicker"
 }, 1000)

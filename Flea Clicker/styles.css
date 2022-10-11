@@ -1,28 +1,74 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-.flea-picture {
-    transition: 0.15s;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    object-fit: contain;
-    }
+.sectionLeft {
+    float: left;
+    width: 80%;
+}
 
-    .flea-picture:hover {
-    transform: scale(105%);
-    cursor: pointer;
-    }
+.sectionRight {
+    float: right;
+    width: 20%;
+}
 
-    .flea-picture:active {
-    transform: scale(90%);
-    }
-
-    #fleas {
+.scoreContainer {
+    background-color: rgb(238,238,238, 0.6);
+    width: 50%;
+    padding: 1px;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
     font-family: Roboto;
-    font-size: 2em;
-    text-align: center;
-    }
+}
 
-    #currency {
-        font-family: Roboto;
-    }
+.clickerContainer img {
+    position: relative;
+    margin-top: 10px;
+    transition: all 0.15s;
+}
+
+.clickerContainer img:hover {
+    transform: scale(1.10)
+}
+
+.clickerContainer img:active {
+    transform: scale(.99);
+}
+
+.shopButton {
+    background-color: #b5b5b5;
+    transition: all .2s ease-in-out;
+    border-radius: 10px;
+    width: 100%;
+    margin: 10px 0px 10px 0px;
+}
+
+.shopButton:hover {
+    background-color: #c7c7c7;
+    transition: all .2s ease-in-out;
+}
+
+.shopButton #image {
+    width: 25%;
+}
+
+.shopButton img {
+    height: 64px;
+    width: 100%;
+}
+
+.shopButton #nameAndCost p {
+    margin: 0px;
+    width: 60%;
+    font-family: Roboto;
+}
+
+.shopButton #nameAndCost p:first-of-type {
+    font-size: 24px;
+}
+
+.shopButton #amount {
+    font-size: 48px;
+    color: #595959;
+    font-family: Roboto;
+    width: 15%;
+}
