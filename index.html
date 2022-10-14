@@ -10,44 +10,78 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <center>
-      <div class="sectionLeft">
-        <div class="scoreContainer">
+      <div class="sectionLeft unselectable">
+        <center>
+        <div class="scoreContainer unselectable">
           <p><span id="fleas">0</span> <span id="currency">fleas</span></p>
+          <p><span id="fps">0</span> fps</p>
         </div>
-        <div class="clickerContainer">
+        <div class="clickerContainer unselectable">
           <img src=flea.jpg onclick="erection(1)" width=300>
         </div>
       </div>
 
-      <div class="sectionRight">
-        <table class="shopButton" onclick="buyCat()">
+      <div class="sectionRight unselectable">
+        <table class="shopButton unselectable" onclick="buyCat()" id="cat">
           <tr>
             <td id="image"><img src="cat.png"></td>
             <td id="nameAndCost">
               <p>Cat</p>
-              <p><span id="catcost">15</span> fleas</p>
+              <p><span id="catcost">100</span> fleas</p>
             </td>
             <td id="amount"><span id="catsowned">0</span></td>
           </tr>
         </table>
 
-        <table class="shopButton" onclick="buyDog()">
+        <table class="shopButton unselectable" onclick="buyCatMultiplier()" id="catmult">
+          <tr>
+            <td id="image"><img src="cat.png"></td>
+            <td id="nameAndCost">
+              <p>Cat Food</p>
+              <p><span id="catmultipliercost">500</span> fleas</p>
+            </td>
+            <td id="amount"><span id="catsmultiplierowned">1</span>x</td>
+          </tr>
+        </table>
+
+        <table class="shopButton unselectable" onclick="buyDog()" id="dog">
           <tr>
             <td id="image"><img src="dog.png"></td>
             <td id="nameAndCost">
               <p>Dog</p>
-              <p><span id="dogcost">100</span> fleas</p>
+              <p><span id="dogcost">1000</span> fleas</p>
             </td>
             <td id="amount"><span id="dogsowned">0</span></td>
           </tr>
         </table>
 
-        <!--
-        <button onclick="buyCat()"> Buy Cat [<span id="catcost">15</span>] -- <span id="catsowned">0</span></button>
-        <button onclick="buyDog()"> Buy Dog [<span id="dogcost">100</span>] -- <span id="dogsowned">0</span></button>
-        <button onclick="buyBlood()"> Buy Blood [<span id="bloodcost">1000</span>] -- <span id="bloodowned">0</span></button>
-        -->
+        <table class="shopButton unselectable" onclick="buyDogMultiplier()" id="dogmult">
+          <tr>
+            <td id="image"><img src="dog.png"></td>
+            <td id="nameAndCost">
+              <p>Dog Food</p>
+              <p><span id="dogmultipliercost">5000</span> fleas</p>
+            </td>
+            <td id="amount"><span id="dogsmultiplierowned">1</span>x</td>
+          </tr>
+        </table>
+
+        <table class="shopButton unselectable" onclick="buyBlood()" id="blood">
+          <tr>
+            <td id="image"><img src="blood.png"></td>
+            <td id="nameAndCost">
+              <p>Blood</p>
+              <p><span id="bloodcost">10000</span> fleas</p>
+            </td>
+            <td id="amount"><span id="bloodowned">1</span></td>
+          </tr>
+        </table>
+        <button onclick="saveGame()", class="save-button unselectable">
+          Save Game
+        </button>
+        <button onclick="resetGame()", class="save-button unselectable">
+          Reset Game
+        </button>
       </div>
     </center>
     <script src="script.js"></script>
