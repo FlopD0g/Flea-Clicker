@@ -36,11 +36,12 @@
 }
 
 .shopButton {
-    background-color: #8a8a8a;
+    background-color: #999999;
     transition: all .15s ease-in-out;
     border-radius: 10px;
     width: 100%;
     margin: 10px 0px 10px 0px;
+    cursor: pointer;
 }
 
 .shopButton:hover {
@@ -49,13 +50,17 @@
     transition: all .15s ease-in-out;
 }
 
+.shopButton:active {
+    transform: scale(0.98);
+}
+
 .shopButton #image {
     width: 25%;
 }
 
 .shopButton img {
     height: 64px;
-    width: 100%;
+    width: 80%;
 }
 
 .shopButton #nameAndCost p {
@@ -66,6 +71,11 @@
 
 .shopButton #nameAndCost p:first-of-type {
     font-size: 24px;
+}
+
+.shopButton #nameAndCost p:last-of-type {
+    color: #ec1313; /*red*/
+    /*color: #40bf40;*/ /*green*/
 }
 
 .shopButton #amount {
@@ -81,3 +91,17 @@
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
 }
+
+.reset-button {
+    border: none;
+    width: 100%; /*325px*/ 
+    text-transform: uppercase;
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding: 10px 0px 10px 0px;
+    border-radius: 25px;
+    cursor: pointer;
+    color: white;
+}
+
+.reset-button {background-image: linear-gradient(to right, #F14658 0%, #FF6b00 100%);}
