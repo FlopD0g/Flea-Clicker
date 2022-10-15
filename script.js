@@ -6,7 +6,7 @@ var dogCost = 1000;
 var dogsOwned = 0;
 
 var bloodCost = 10000;
-var bloodowned = 0;
+var bloodOwned = 0;
 var catMultiplierCost = 500;
 var catsMultiplierOwned = 1;
 var dogMultiplierCost = 5000;
@@ -80,12 +80,12 @@ function buyDogMultiplier() {
 function buyBlood() {
     if (fleas_owned >= bloodCost) {
         fleas_owned -= bloodCost;
-        bloodowned += 1;
+        bloodOwned += 1;
         bloodCost = Math.round(bloodCost * 5.5);
 
         document.getElementById("fleas").innerHTML = fleas_owned;
         document.getElementById("bloodcost").innerHTML = bloodCost;
-        document.getElementById("bloodowned").innerHTML = bloodowned;
+        document.getElementById("bloodowned").innerHTML = bloodOwned;
     }
 }
 
@@ -108,7 +108,7 @@ function loadGame() {
     if (typeof savedGame.dogCost !== "undefined") dogCost = savedGame.dogCost;
     if (typeof savedGame.dogsOwned !== "undefined") dogsOwned = savedGame.dogsOwned;
     if (typeof savedGame.bloodCost !== "undefined") bloodCost = savedGame.bloodCost;
-    if (typeof savedGame.bloodowned !== "undefined") bloodowned = savedGame.bloodowned;
+    if (typeof savedGame.bloodowned !== "undefined") bloodOwned = savedGame.bloodowned;
     if (typeof savedGame.catMultiplierCost !== "undefined") catMultiplierCost = savedGame.catMultiplierCost;
     if (typeof savedGame.catsMultiplierOwned !== "undefined") catsMultiplierOwned = savedGame.catsMultiplierOwned;
     if (typeof savedGame.dogMultiplierCost !== "undefined") dogMultiplierCost = savedGame.dogMultiplierCost;
@@ -125,7 +125,7 @@ function loadGame() {
     document.getElementById("dogmultipliercost").innerHTML = dogMultiplierCost;
     document.getElementById("dogsmultiplierowned").innerHTML = dogsMutliplierOwned;
     document.getElementById("bloodcost").innerHTML = bloodCost;
-    document.getElementById("bloodowned").innerHTML = bloodowned;
+    document.getElementById("bloodowned").innerHTML = bloodOwned;
 
 }
 
@@ -137,7 +137,7 @@ function saveGame() {
         dogCost: dogCost,
         dogsOwned: dogsOwned,
         bloodCost: bloodCost,
-        bloodowned: bloodowned,
+        bloodowned: bloodOwned,
         catMultiplierCost: catMultiplierCost,
         catsMultiplierOwned: catsMultiplierOwned,
         dogMultiplierCost: dogMultiplierCost,
@@ -159,14 +159,14 @@ window.onload = function() {
 };
 
 setInterval(function() {
-    if (bloodowned >= 1) {
-        fps = (catsOwned * Math.floor((Math.random() * 2) + 1) * catsMultiplierOwned * bloodowned) 
-        + (dogsOwned * Math.floor((Math.random() * 10) + 5) * dogsMutliplierOwned * bloodowned) 
-        + (bloodowned * Math.floor((Math.random() * 100) + 30) * bloodowned)
+    if (bloodOwned >= 1) {
+        fps = (catsOwned * Math.floor((Math.random() * 2) + 1) * catsMultiplierOwned * bloodOwned) 
+        + (dogsOwned * Math.floor((Math.random() * 10) + 5) * dogsMutliplierOwned * bloodOwned) 
+        + (bloodOwned * Math.floor((Math.random() * 100) + 30) * bloodOwned)
     }
     fps = (catsOwned * Math.floor((Math.random() * 2) + 1) * catsMultiplierOwned) 
     + (dogsOwned * Math.floor((Math.random() * 10) + 5) * dogsMutliplierOwned) 
-    + (bloodowned * Math.floor((Math.random() * 100) + 30))
+    + (bloodOwned * Math.floor((Math.random() * 100) + 30))
 
 
     fleas_owned += fps;
