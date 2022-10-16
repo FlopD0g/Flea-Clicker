@@ -6,6 +6,6 @@ https://flopd0g.github.io/Flea-Clicker/
 
 ![image info](./images/v0.1.0.PNG)
 
-#### The Overall Idea:
+### The Overall Idea:
 
-![image info](./images/theAllPowerful.PNG)
+![image info](./images/theAllPowerful - Copy.PNG)
