@@ -1,6 +1,6 @@
-It's a game about fleas
+### Website on Github Pages:
 
-I will add something here in the future this is kinda useless rn
+https://flopd0g.github.io/Flea-Clicker/
 
 ### Version 0.1.0
 
