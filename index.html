@@ -7,7 +7,115 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <title>Flea Clicker</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+      .sectionLeft {
+          float: left;
+          width: 75%;
+      }
+
+      .sectionRight {
+          float: right;
+          width: 25%;
+      }
+
+      .scoreContainer {
+          background-color: rgb(238,238,238, 0.6);
+          width: 50%;
+          padding: 1px;
+          border-radius: 10px;
+          font-size: 24px;
+          font-weight: bold;
+          font-family: Roboto;
+          line-height: .5em;
+      }
+
+      .clickerContainer img {
+          position: relative;
+          margin-top: 10px;
+          transition: all 0.15s;
+      }
+
+      .clickerContainer img:hover {
+          transform: scale(1.10)
+      }
+
+      .clickerContainer img:active {
+          transform: scale(.99);
+      }
+
+      .shopButton {
+          background-color: #999999;
+          transition: all .15s ease-in-out;
+          border-radius: 10px;
+          width: 100%;
+          margin: 10px 0px 10px 0px;
+          cursor: pointer;
+      }
+
+      .shopButton:hover {
+          background-color: #c7c7c7;
+          box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.568);
+          transition: all .15s ease-in-out;
+      }
+
+      .shopButton:active {
+          transform: scale(0.98);
+      }
+
+      .shopButton #image {
+          width: 25%;
+      }
+
+      .shopButton img {
+          height: 64px;
+          width: 80%;
+      }
+
+      .shopButton #nameAndCost p {
+          margin: 0px;
+          width: 60%;
+          font-family: Roboto;
+      }
+
+      .shopButton #nameAndCost p:first-of-type {
+          font-size: 24px;
+      }
+
+      .shopButton #nameAndCost p:last-of-type {
+          color: #ec1313; /*red*/
+          /*color: #40bf40;*/ /*green*/
+      }
+
+      .shopButton #amount {
+          font-size: 36px;
+          color: #595959;
+          font-family: Roboto;
+          width: 15%;
+      }
+
+      .unselectable {
+          -webkit-user-select: none; /* Safari */        
+          -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* IE10+/Edge */
+          user-select: none; /* Standard */
+      }
+
+      .reset-button {
+          border: none;
+          width: 100%; /*325px*/ 
+          text-transform: uppercase;
+          font-size: 16px;
+          margin-bottom: 10px;
+          padding: 10px 0px 10px 0px;
+          border-radius: 25px;
+          cursor: pointer;
+          color: white;
+      }
+
+      .reset-button {background-image: linear-gradient(to right, #F14658 0%, #FF6b00 100%);}
+    </style>
   </head>
   <body>
       <div class="sectionLeft unselectable">
@@ -17,14 +125,14 @@
           <p><span id="fps">0</span> fps</p>
         </div>
         <div class="clickerContainer unselectable">
-          <img src="download__1_-removebg-preview.png".png onclick="erection(1)" width=300>
+          <img src="./images/flea.png" onclick="erection(1)" width=300>
         </div>
       </div>
 
       <div class="sectionRight unselectable">
         <table class="shopButton unselectable" onclick="buyCat()" id="cat">
           <tr>
-            <td id="image"><img src="cat.png"></td>
+            <td id="image"><img src="./images/cat.png"></td>
             <td id="nameAndCost">
               <p>Cat</p>
               <p><span id="catcost">100</span></p>
@@ -35,7 +143,7 @@
 
         <table class="shopButton unselectable" onclick="buyCatMultiplier()" id="catmult">
           <tr>
-            <td id="image"><img src="cat.png"></td>
+            <td id="image"><img src="./images/cat.png"></td>
             <td id="nameAndCost">
               <p>Cat Food</p>
               <p><span id="catmultipliercost">500</span></p>
@@ -46,7 +154,7 @@
 
         <table class="shopButton unselectable" onclick="buyDog()" id="dog">
           <tr>
-            <td id="image"><img src="dog.png"></td>
+            <td id="image"><img src="./images/dog.png"></td>
             <td id="nameAndCost">
               <p>Dog</p>
               <p><span id="dogcost">1000</span></p>
@@ -57,7 +165,7 @@
 
         <table class="shopButton unselectable" onclick="buyDogMultiplier()" id="dogmult">
           <tr>
-            <td id="image"><img src="dog.png"></td>
+            <td id="image"><img src="./images/dog.png"></td>
             <td id="nameAndCost">
               <p>Dog Food</p>
               <p><span id="dogmultipliercost">5000</span></p>
@@ -68,7 +176,7 @@
 
         <table class="shopButton unselectable" onclick="buyBlood()" id="blood">
           <tr>
-            <td id="image"><img src="blood.png"></td>
+            <td id="image"><img src="./images/blood.png"></td>
             <td id="nameAndCost">
               <p>Blood</p>
               <p><span id="bloodcost">10000</span></p>
@@ -83,6 +191,201 @@
         </div>
       </div>
     </center>
-    <script src="script.js"></script>
+    <script>
+      let fleas_owned = 0;
+      let catCost = 100;
+      let catsOwned = 0;
+      let dogCost = 1000;
+      let dogsOwned = 0;
+      let bloodCost = 10000;
+      let bloodOwned = 0;
+      let catMultiplierCost = 500;
+      let catsMultiplierOwned = 1;
+      let dogMultiplierCost = 5000;
+      let dogsMutliplierOwned = 1;
+      let fps = 0;
+      const catStyles = document.querySelectorAll('.cat');
+      const catUpgradeStyles = document.querySelectorAll('.catupgrade');
+      const dogStyles = document.querySelectorAll('.dog');
+      const dogUpgradeStyles = document.querySelectorAll('.dogupgrade');
+      const bloodStyles = document.querySelectorAll('.blood');
+
+      document.getElementById("fleas").innerHTML = fleas_owned;
+      document.getElementById("fps").innerHTML = fps;
+
+      function erection(amount) {
+          fleas_owned += amount;
+          fps += amount;
+          document.getElementById("fleas").innerHTML = fleas_owned;
+          document.getElementById("fps").innerHTML = fps;
+      }
+
+      function buyCat() {
+          if (fleas_owned >= catCost) {
+              fleas_owned -= catCost;
+              catsOwned += 1;
+              catCost = Math.round(catCost * 1.5);
+
+              document.getElementById("fleas").innerHTML = fleas_owned;
+              document.getElementById("catcost").innerHTML = catCost;
+              document.getElementById("catsowned").innerHTML = catsOwned;
+          }
+      }
+
+      function buyCatMultiplier() {
+          if (fleas_owned >= catMultiplierCost) {
+              fleas_owned -= catMultiplierCost;
+              catsMultiplierOwned *= 2;
+              catMultiplierCost = Math.round(catMultiplierCost * 3.5);
+
+              document.getElementById("fleas").innerHTML = fleas_owned;
+              document.getElementById("catmultipliercost").innerHTML = catMultiplierCost;
+              document.getElementById("catsmultiplierowned").innerHTML = catsMultiplierOwned;
+          }
+      }
+
+      function buyDog() {
+          if (fleas_owned >= dogCost) {
+              fleas_owned -= dogCost;
+              dogsOwned += 1;
+              dogCost = Math.round(dogCost * 2.5);
+
+              document.getElementById("fleas").innerHTML = fleas_owned;
+              document.getElementById("dogcost").innerHTML = dogCost;
+              document.getElementById("dogsowned").innerHTML = dogsOwned;
+          }
+      }
+
+      function buyDogMultiplier() {
+          if (fleas_owned >= dogMultiplierCost) {
+              fleas_owned -= dogMultiplierCost;
+              dogsMutliplierOwned *= 2;
+              dogMultiplierCost = Math.round(dogMultiplierCost * 4.5);
+
+              document.getElementById("fleas").innerHTML = fleas_owned;
+              document.getElementById("dogmultipliercost").innerHTML = dogMultiplierCost;
+              document.getElementById("dogsmultiplierowned").innerHTML = dogsMutliplierOwned;
+          }
+      }
+
+      function buyBlood() {
+          if (fleas_owned >= bloodCost) {
+              fleas_owned -= bloodCost;
+              bloodOwned += 1;
+              bloodCost = Math.round(bloodCost * 5.5);
+
+              document.getElementById("fleas").innerHTML = fleas_owned;
+              document.getElementById("bloodcost").innerHTML = bloodCost;
+              document.getElementById("bloodowned").innerHTML = bloodOwned;
+          }
+      }
+
+      function checkAvailability(variable, elid, elid2) {
+          if (fleas_owned >= variable) {
+              document.getElementById(elid).style.backgroundColor = "#cccccc";
+              document.getElementById(elid2).style.color = "#00cc00";
+          }
+          else if (fleas_owned < variable) {
+              document.getElementById(elid).style.backgroundColor = "#999999";
+              document.getElementById(elid2).style.color = "#cc0000"
+          }
+      }
+
+      function loadGame() {
+          var savedGame = JSON.parse(localStorage.getItem("gameSave"));
+          if (typeof savedGame.fleas_owned !== "undefined") fleas_owned = savedGame.fleas_owned;
+          if (typeof savedGame.catCost !== "undefined") catCost = savedGame.catCost;
+          if (typeof savedGame.catsOwned !== "undefined") catsOwned = savedGame.catsOwned;
+          if (typeof savedGame.dogCost !== "undefined") dogCost = savedGame.dogCost;
+          if (typeof savedGame.dogsOwned !== "undefined") dogsOwned = savedGame.dogsOwned;
+          if (typeof savedGame.bloodCost !== "undefined") bloodCost = savedGame.bloodCost;
+          if (typeof savedGame.bloodowned !== "undefined") bloodOwned = savedGame.bloodowned;
+          if (typeof savedGame.catMultiplierCost !== "undefined") catMultiplierCost = savedGame.catMultiplierCost;
+          if (typeof savedGame.catsMultiplierOwned !== "undefined") catsMultiplierOwned = savedGame.catsMultiplierOwned;
+          if (typeof savedGame.dogMultiplierCost !== "undefined") dogMultiplierCost = savedGame.dogMultiplierCost;
+          if (typeof savedGame.dogsMutliplierOwned !== "undefined") dogsMutliplierOwned = savedGame.dogsMutliplierOwned;
+
+          document.getElementById("fleas").innerHTML = fleas_owned;
+          document.getElementById("fps").innerHTML = fps;
+          document.getElementById("catcost").innerHTML = catCost;
+          document.getElementById("catsowned").innerHTML = catsOwned;
+          document.getElementById("catmultipliercost").innerHTML = catMultiplierCost;
+          document.getElementById("catsmultiplierowned").innerHTML = catsMultiplierOwned;
+          document.getElementById("dogcost").innerHTML = dogCost;
+          document.getElementById("dogsowned").innerHTML = dogsOwned;
+          document.getElementById("dogmultipliercost").innerHTML = dogMultiplierCost;
+          document.getElementById("dogsmultiplierowned").innerHTML = dogsMutliplierOwned;
+          document.getElementById("bloodcost").innerHTML = bloodCost;
+          document.getElementById("bloodowned").innerHTML = bloodOwned;
+
+      }
+
+      function saveGame() {
+          var gameSave = {
+              fleas_owned: fleas_owned,
+              catCost: catCost,
+              catsOwned: catsOwned,
+              dogCost: dogCost,
+              dogsOwned: dogsOwned,
+              bloodCost: bloodCost,
+              bloodowned: bloodOwned,
+              catMultiplierCost: catMultiplierCost,
+              catsMultiplierOwned: catsMultiplierOwned,
+              dogMultiplierCost: dogMultiplierCost,
+              dogsMutliplierOwned: dogsMutliplierOwned
+          };
+          localStorage.setItem("gameSave", JSON.stringify(gameSave));
+      }
+
+      function resetGame() {
+          if(confirm("Are you sure you want to reset your game?")) {
+              var gameSave = {};
+              localStorage.setItem("gameSave", JSON.stringify(gameSave));
+              location.reload();
+          }
+      }
+
+      window.onload = function() {
+          loadGame();
+      };
+
+      setInterval(function() {
+          if (bloodOwned >= 1) {
+              fps = (catsOwned * Math.floor((Math.random() * 2) + 1) * catsMultiplierOwned * bloodOwned) 
+              + (dogsOwned * Math.floor((Math.random() * 10) + 5) * dogsMutliplierOwned * bloodOwned) 
+              + (bloodOwned * Math.floor((Math.random() * 100) + 30) * bloodOwned)
+          }
+          fps = (catsOwned * Math.floor((Math.random() * 2) + 1) * catsMultiplierOwned) 
+          + (dogsOwned * Math.floor((Math.random() * 10) + 5) * dogsMutliplierOwned) 
+          + (bloodOwned * Math.floor((Math.random() * 100) + 30))
+
+
+          fleas_owned += fps;
+          document.getElementById("fps").innerHTML = fps;
+          document.getElementById("fleas").innerHTML = fleas_owned;
+          document.title = fleas_owned + " fleas - Flea Clicker"
+
+          checkAvailability(catCost, "cat", "catcost")
+          checkAvailability(catMultiplierCost, "catmult", "catmultipliercost")
+          checkAvailability(dogCost, "dog", "dogcost")
+          checkAvailability(dogMultiplierCost, "dogmult", "dogmultipliercost")
+          checkAvailability(bloodCost, "blood", "bloodcost")
+      }, 1000) //1000ms = 1 second
+
+      setInterval(function() {
+          saveGame();
+      }, 30000); //30000ms = 30 seconds
+
+      document.addEventListener("keydown", function(event) {
+          if (event.ctrlKey && event.which == 83) {
+              event.preventDefault();
+              saveGame();
+          }
+      }, false);
+
+      document.addEventListener("contextmenu", function(event){
+          event.preventDefault();    
+      }, false);
+    </script>
   </body>
 </html>
