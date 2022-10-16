@@ -8,4 +8,4 @@ https://flopd0g.github.io/Flea-Clicker/
 
 ### The Overall Idea:
 
-![image info](./images/theAllPowerful.png)
+![image info](./images/theAllPowerful.PNG)
