@@ -19,8 +19,9 @@ https://flopd0g.github.io/Flea-Clicker/
 ##### Cleaned up code
 ## Command Prompt:
 #### Change modes from in game
-##### [fastmode *true/false*]
+##### [fast *true/false*]
 ##### [save? *true/false*]
+##### [reset]
 #### Check variables in game
 ##### [tell *var*]
 ##### "fleas": fleas_owned,
