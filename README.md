@@ -18,6 +18,11 @@ https://flopd0g.github.io/Flea-Clicker/
 ##### Added a fast mode
 ##### Cleaned up code
 ## Command Prompt:
+#### Change modes from in game
+##### fastmode <true/false>
+##### save? <true/false>
+#### Check variables in game
+#### Tell <variable>
 ##### "fleas": fleas_owned,
 ##### "catcost": catCost,
 ##### "catsowned": catsOwned,
@@ -32,7 +37,5 @@ https://flopd0g.github.io/Flea-Clicker/
 ##### "clickpower": clickPower,
 ##### "totalclicks": totalClicks,
 ##### "fps": fps,
-##### "fastmode": fastmode,
-##### "save": save,
 ##### "clickpower": clickPower,
 ##### "totalclicks": totalClicks
