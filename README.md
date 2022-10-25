@@ -18,12 +18,12 @@ https://flopd0g.github.io/Flea-Clicker/
 
 ***
 
-#### Added:
+### Added:
 ##### Command Prompt
 ##### Better UI
 ##### Added a fast mode
 ##### Cleaned up code
-#### Command Prompt:
+### Command Prompt:
 ##### "fleas": fleas_owned,
 ##### "catcost": catCost,
 ##### "catsowned": catsOwned,
