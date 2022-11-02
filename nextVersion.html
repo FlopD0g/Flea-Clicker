@@ -100,6 +100,16 @@
           -ms-user-select: none; /* IE10+/Edge */
           user-select: none; /* Standard */
       }
+
+      #box {
+        font-family: Arial;
+        display: block;
+        font-size: 7em;
+        color: red;
+        margin: 0;
+        text-align: center;
+        padding: 35vh 0 35vh 0;
+      }
     </style>
 
     <!-- =================================== -->
@@ -110,7 +120,7 @@
     <!-- Images have to be 64x64 and transparent -->
 
     <center>
-      <div class="sectionLeft unselectable">
+      <div class="sectionLeft unselectable" id="left">
         <div class="scoreContainer unselectable">
           <p><span id="fleas">0</span> <span id="currency">fleas</span></p>
           <p><span id="fps-style"><span id="fps">0</span> fps</span></p>
@@ -120,7 +130,7 @@
         </div>
       </div>
 
-      <div class="sectionRight unselectable">
+      <div class="sectionRight unselectable" id="right">
         <table class="shopButton unselectable" onclick="buyCat()" id="cat">
           <tr>
             <td id="image"><img src="./images/cat.png"></td>
@@ -170,7 +180,7 @@
             <td id="image"><img src="./images/blood.png"></td>
             <td id="nameAndCost">
               <p>Blood</p>
-              <p><span id="bloodcost">10000</span></p>
+              <p><span id="bloodcost">20000</span></p>
             </td>
             <td id="amount"><span id="bloodowned">1</span></td>
           </tr>
@@ -194,6 +204,7 @@
       let dogsMutliplierOwned = 1;
       let clickPower = 1;
       let totalClicks = 0;
+      let tick = 0;
       let fps = 0;
       let varList = {};
 
@@ -294,7 +305,8 @@
           "fastmode": fastmode,
           "save": save,
           "clickpower": clickPower,
-          "totalclicks": totalClicks
+          "totalclicks": totalClicks,
+          "tick": tick
         };
       }
 
@@ -328,6 +340,7 @@
           if (typeof savedGame.dogsMutliplierOwned !== "undefined") dogsMutliplierOwned = savedGame.dogsMutliplierOwned;
           if (typeof savedGame.clickPower !== "undefined") clickPower = savedGame.clickPower;
           if (typeof savedGame.totalClicks !== "undefined") totalClicks = savedGame.totalClicks;
+          if (typeof savedGame.tick !== "undefined") tick = savedGame.tick;
 
           updateDisplay();
       }
@@ -346,17 +359,27 @@
               dogMultiplierCost: dogMultiplierCost,
               dogsMutliplierOwned: dogsMutliplierOwned,
               clickPower: clickPower,
-              totalClicks: totalClicks
+              totalClicks: totalClicks,
+              tick: tick
           };
           localStorage.setItem("gameSave", JSON.stringify(gameSave));
       }
 
-      function resetGame() {
+      function resetGame(ask) {
           if(confirm("Are you sure you want to reset your game?")) {
               var gameSave = {};
               localStorage.setItem("gameSave", JSON.stringify(gameSave));
               location.reload();
           }
+      }
+
+      function specialFunction() {
+          document.getElementById("left").innerHTML = "";
+          document.getElementById("right").innerHTML = "";
+          const box = document.createElement("div");
+          box.id = "box";
+          document.body.appendChild(box);
+          document.getElementById("box").innerHTML = "Fuck You"; // Text to display across entire screen
       }
 
       // console commands
@@ -440,6 +463,10 @@
           alert(`${consoleArray[1]}: ${varList[consoleArray[1]]}`);
         }
 
+        if(consoleArray[0] == "dick") {
+          specialFunction();
+        }
+
         consoleText = "";
         consoleArray = "";
       }
@@ -458,6 +485,7 @@
               fps = (catsOwned * Math.floor((Math.random() * 4)) * catsMultiplierOwned * bloodOwned) 
               + (dogsOwned * Math.floor((Math.random() * 10)) * dogsMutliplierOwned * bloodOwned) 
               + (bloodOwned * Math.floor((Math.random() * 100)) * bloodOwned)
+              tick++;
           }
           fps = (catsOwned * Math.ceil((Math.random() * 4)) * catsMultiplierOwned) 
           + (dogsOwned * Math.floor((Math.random() * 10)) * dogsMutliplierOwned) 
@@ -466,6 +494,7 @@
           fleas_owned += fps;
           updateDisplay();
           document.title = fleas_owned + " fleas - Flea Clicker"
+          tick++;
           }
       }, 1000) //1000ms = 1 second
 
@@ -475,15 +504,16 @@
               fps = (catsOwned * Math.floor((Math.random() * 4)) * catsMultiplierOwned * bloodOwned) 
               + (dogsOwned * Math.floor((Math.random() * 10)) * dogsMutliplierOwned * bloodOwned) 
               + (bloodOwned * Math.floor((Math.random() * 100)) * bloodOwned)
+              tick++;
           }
           fps = (catsOwned * Math.ceil((Math.random() * 4)) * catsMultiplierOwned) 
           + (dogsOwned * Math.floor((Math.random() * 10)) * dogsMutliplierOwned) 
           + (bloodOwned * Math.floor((Math.random() * 100)))
 
           fleas_owned += fps;
-          document.getElementById("fps").innerHTML = fps;
-          document.getElementById("fleas").innerHTML = fleas_owned;
+          updateDisplay();
           document.title = fleas_owned + " fleas - Flea Clicker"
+          tick++;
           }
       }, 0) //0ms = fastest it can go in browser
 
